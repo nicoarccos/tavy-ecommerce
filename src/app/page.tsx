@@ -1,113 +1,162 @@
 import Image from "next/image";
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="relative">
+      {/* Hero Section */}
+      <section className="relative h-[80vh] w-full">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/ford-raptor.jpg"
+            alt="Ford Raptor Argentina"
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
-      </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-800/70 flex items-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-2xl text-white">
+              <h1 className="text-6xl font-bold mb-6 leading-tight">Tu Aventura Comienza Aquí</h1>
+              <p className="text-xl mb-8 text-slate-200">Descubre nuestra selección premium de accesorios para 4x4, pickups y vehículos de alta gama. Calidad y rendimiento garantizados.</p>
+              <div className="flex space-x-4">
+                <Link
+                  href="/shop"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors shadow-md"
+                >
+                  Explorar Catálogo
+                </Link>
+                <Link
+                  href="/categories"
+                  className="bg-slate-800/80 hover:bg-slate-700/80 text-white px-8 py-4 rounded-lg font-semibold border border-slate-600/30 transition-colors"
+                >
+                  Ver Categorías
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      {/* Featured Categories */}
+      <section className="py-24 relative bg-gradient-to-br from-slate-900 to-slate-800 overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0 bg-[url('/images/pattern.svg')] bg-repeat"></div>
+        </div>
+        <div className="absolute w-96 h-96 bg-blue-600/20 rounded-full blur-3xl -top-20 -left-20"></div>
+        <div className="absolute w-96 h-96 bg-blue-800/20 rounded-full blur-3xl -bottom-20 -right-20"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4">Categorías Destacadas</h2>
+            <p className="text-lg text-slate-300">Encuentra los accesorios perfectos para tu vehículo</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                name: '4x4',
+                description: 'Accesorios para todoterrenos',
+                image: '/images/amarok.jpg'
+              },
+              {
+                name: 'Pickups',
+                description: 'Todo para tu camioneta',
+                image: '/images/strada.jpg'
+              },
+              {
+                name: 'SUV',
+                description: 'Accesorios para SUVs',
+                image: '/images/10.jpg'
+              },
+              {
+                name: 'Hatchback',
+                description: 'Accesorios para autos compactos',
+                image: '/images/golf.png'
+              }
+            ].map((category) => (
+              <Link
+                key={category.name}
+                href={`/categories/${category.name.toLowerCase()}`}
+                className="group relative h-[400px] rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-700 bg-gradient-to-br from-slate-800 to-slate-900"
+              >
+                <Image 
+                  src={category.image}
+                  alt={category.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex flex-col justify-between p-8">
+                  <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center border border-white/20 group-hover:bg-white/20 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-4xl font-bold text-white mb-3 drop-shadow-md group-hover:translate-x-1 transition-transform">{category.name}</h3>
+                    <p className="text-slate-100 text-lg drop-shadow group-hover:translate-x-1 transition-transform duration-300">{category.description}</p>
+                    <div className="mt-4 inline-flex items-center text-white font-medium group-hover:text-blue-300 transition-colors">
+                      <span>Ver productos</span>
+                      <svg className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      {/* Features */}
+      <section className="py-24 bg-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-slate-900 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-center text-slate-900">Calidad Premium</h3>
+              <p className="text-slate-600 text-center">Productos de alta calidad con garantía de satisfacción y durabilidad</p>
+            </div>
+            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-slate-900 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-center text-slate-900">Envío Rápido</h3>
+              <p className="text-slate-600 text-center">Entrega rápida y segura en todo el país con seguimiento en tiempo real</p>
+            </div>
+            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-slate-900 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-center text-slate-900">Soporte 24/7</h3>
+              <p className="text-slate-600 text-center">Asesoramiento técnico y atención al cliente disponible todo el día</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      {/* CTA Section */}
+      <section className="py-24 bg-gradient-to-r from-slate-900 to-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold text-white mb-6">¿Listo para Mejorar tu Vehículo?</h2>
+          <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">Únete a nuestra comunidad y descubre las mejores ofertas en accesorios premium para tu vehículo</p>
+          <Link
+            href="/register"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors shadow-md inline-block"
+          >
+            Crear Cuenta Gratuita
+          </Link>
+        </div>
+      </section>
+    </div>
   );
 }
