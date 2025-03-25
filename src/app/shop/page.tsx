@@ -130,25 +130,6 @@ export default function ShopPage() {
 
   return (
     <div className="relative">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-slate-900 to-slate-800 overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0 bg-[url('/images/pattern.svg')] bg-repeat"></div>
-        </div>
-        <div className="absolute w-96 h-96 bg-blue-600/20 rounded-full blur-3xl -top-20 -left-20 animate-pulse"></div>
-        <div className="absolute w-96 h-96 bg-blue-800/20 rounded-full blur-3xl -bottom-20 -right-20 animate-pulse" style={{animationDuration: '8s'}}></div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center mb-8">
-            <h1 className="text-5xl font-bold text-white mb-4">Nuestra Tienda</h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Encuentra los mejores accesorios para tu vehículo 4x4, pickup o utilitario con la
-              calidad y garantía que solo Tavy4x4 te puede ofrecer.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Banner de productos destacados */}
       <section className="relative py-12 bg-gradient-to-r from-blue-900 to-slate-900 overflow-hidden">
         <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-blue-600/20 to-transparent"></div>

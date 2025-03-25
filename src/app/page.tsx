@@ -18,7 +18,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-800/70 flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl text-white">
-              <h1 className="text-6xl font-bold mb-6 leading-tight">Tu Aventura Comienza Aquí</h1>
+              <h1 className="text-6xl font-bold mb-6 leading-tight">Transforma tu vehículo</h1>
               <p className="text-xl mb-8 text-slate-200">Descubre nuestra selección premium de accesorios para 4x4, pickups y vehículos de alta gama. Calidad y rendimiento garantizados.</p>
               <div className="flex space-x-4">
                 <Link
